@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { FacebookAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import {  GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import auth from "../Auth/Firebase/firebase.config";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -34,16 +34,17 @@ const AuthProvider = ({ children }) => {
                 .then(res =>{
                     if(res.data.token){
                         localStorage.setItem("access-token",res.data.token)
+                        setLoading(false)
                     }
                     else{
                         localStorage.removeItem("access-token")
+                        setLoading(false)
                     }
                 })
             }
-            setLoading(false)
         })
         return () => unSubscribe()
-    },[])
+    },[axiosPublic])
     const logOut = () =>{
         signOut(auth)
     }

@@ -2,9 +2,11 @@ import { FaTrashAlt } from "react-icons/fa";
 import useCart from "../../../components/Shared/Hooks/useCart";
 import useAxios from "../../../components/Shared/Hooks/useAxios";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
     const [cartItem, refetch, isLoading] = useCart()
+    // const [totalPrice, setTotalPrice] = useState(0)
     const axiosSecure = useAxios()
     if (isLoading) {
         return <p>Loading...</p>
@@ -43,7 +45,10 @@ const Cart = () => {
             <div className="text-lg font-bold flex items-center justify-evenly">
                 <p>Total Order:{cartItem?.length}</p>
                 <p>Total Price:{TotalPrice}</p>
-                <button className=" btn bg-[#d1a054] hover:bg-[#e0a957] text-white">Pay</button>
+                {
+                    cartItem.length > 0 ? <Link to="/dashboard/payment"><button className=" btn bg-[#d1a054] hover:bg-[#e0a957] text-white">Pay</button></Link>:
+                   <button disabled className=" btn bg-[#d1a054] hover:bg-[#e0a957] text-white">Pay</button>
+                }
             </div>
             <div>
                 <div className="overflow-x-auto">

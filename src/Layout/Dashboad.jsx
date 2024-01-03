@@ -14,7 +14,7 @@ const Dashboad = () => {
                     {
                         isAdmin ?
                             <>
-                                <NavLink to="adminHome">
+                                <NavLink to="/dashboard/adminHome">
                                     <div className="flex bg-blue-600 p-2 rounded gap-2 items-center">
                                         <FaHome></FaHome>
                                         <li>
@@ -56,7 +56,7 @@ const Dashboad = () => {
                                 </NavLink>
                             </> :
                             <>
-                                <NavLink to="userHome">
+                                <NavLink to="/dashboard/userHome">
                                     <div className="flex bg-blue-600 p-2 rounded gap-2 items-center">
                                         <FaHome></FaHome>
                                         <li>
@@ -72,7 +72,7 @@ const Dashboad = () => {
                                         </li>
                                     </div>
                                 </NavLink>
-                                <NavLink to="paymentHistory">
+                                <NavLink to="/dashboard/paymentHistory">
                                     <div className="flex bg-blue-600 p-2 rounded gap-2 items-center">
                                         <FaHistory></FaHistory>
                                         <li>
